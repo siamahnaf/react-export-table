@@ -14,7 +14,7 @@ $ npm i react-export-table
 ```
 
 ```bash
-import { ExportAsExcel, ExportAsPdf, CopyToClipboard, CopyTextToClipboard, PrintDocument, ExcelToJsonConverter } from "react-export-table";
+import { ExportAsExcel, ExportAsPdf, ExportAsCsv, CopyToClipboard, CopyTextToClipboard, PrintDocument, ExcelToJsonConverter, FileUpload } from "react-export-table";
 
 
 //Export as Excel Sheet
@@ -38,6 +38,13 @@ import { ExportAsExcel, ExportAsPdf, CopyToClipboard, CopyTextToClipboard, Print
         Export as PDF
     </button>
 </ExportAsPdf>
+
+//Export as CSV
+<ExportAsCsv
+    data={data}
+>
+    <button>Hello World</button>
+</ExportAsCsv>
 
 //Copy to clipboard (Array or Table)
 <CopyToClipboard
@@ -82,6 +89,21 @@ import { ExportAsExcel, ExportAsPdf, CopyToClipboard, CopyTextToClipboard, Print
         </div>
     )}
 </ExcelToJsonConverter>
+
+//File Upload
+<FileUpload acceptType={[".pdf"]}>
+    {({
+        isDragging,
+        dragProps,
+        onFileUpload,
+        errors,
+        fileInfo
+    }) => (
+        <div className="border border-solid border-red-600 p-8" {...dragProps} onClick={onFileUpload}>
+            {errors}
+        </div>
+    )}
+</FileUpload>
 ```
 
 # Options
@@ -220,6 +242,26 @@ You find this three type theme-
 <img src="https://res.cloudinary.com/dub0dpenl/image/upload/v1682863912/samples_rwolo2.png" alt="Theme"/>
 
 
+## ExportAsCsv
+
+<table width="100%">
+  <tr>
+    <td> chilren </td>
+    <td> ReactNode (Required) </td>
+    <td> </td>
+  </tr>
+   <tr>
+    <td> data </td>
+    <td> Array (Required) </td>
+    <td> </td>
+  </tr>
+   <tr>
+    <td> fileName </td>
+    <td> String (Optional) </td>
+    <td> Custom CSV File Name </td>
+  </tr>
+</table>
+
 ## CopyToClipboard
 
 <table width="100%">
@@ -356,6 +398,70 @@ You find this three type theme-
     <td> data </td>
     <td> Array<any> </td>
     <td> Read or Converted data </td>
+  </tr>
+  <tr>
+    <td> fileInfo </td>
+    <td> object </td>
+    <td> Selected file info </td>
+  </tr>
+</table>
+
+## FileUpload
+
+### Props
+<table width="100%">
+  <tr>
+    <th> Name </th>
+    <th> Types </th>
+    <th> Description </th>
+    <th> Example </th>
+  </tr>
+  <tr>
+    <td> acceptType </td>
+    <td> Function (Required) </td>
+    <td> File Accept Type </td>
+    <td> `acceptType={[".pdf"]}` </td>
+  </tr>
+   <tr>
+    <td> inputProps </td>
+    <td> React.HTMLProps<HTMLInputElement> (Optional) </td>
+    <td> Input Props for input field </td>
+    <td> </td>
+  </tr>
+   <tr>
+    <td> onChange </td>
+    <td> Function (Optional) </td>
+    <td></td>
+    <td>`onChange={(file:File)=> console.log(file)}`</td>
+  </tr>
+</table>
+
+### Exported Options
+<table width="100%">
+  <tr>
+    <th> Name </th>
+    <th> Types </th>
+    <th> Description </th>
+  </tr>
+  <tr>
+    <td> dragProps </td>
+    <td> object </td>
+    <td> Native element props for drag and drop feature </td>
+  </tr>
+   <tr>
+    <td> isDragging </td>
+    <td> boolean </td>
+    <td> "true" if a file is being dragged </td>
+  </tr>
+   <tr>
+    <td> onFileUpload </td>
+    <td> function </td>
+    <td> Called when an element is clicks and triggers to open a file dialog </td>
+  </tr>
+   <tr>
+    <td> errors </td>
+    <td> string </td>
+    <td> Validation Error </td>
   </tr>
   <tr>
     <td> fileInfo </td>
