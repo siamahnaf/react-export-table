@@ -1,6 +1,6 @@
 {
   "name": "react-export-table",
-  "version": "2.0.8",
+  "version": "2.0.9",
   "description": "A all in one solution for exporting array data as excel, pdf and copy to clipboard & print data!",
   "homepage": "https://github.com/siamahnaf/react-export-table",
   "main": "dist/cjs/index.js",

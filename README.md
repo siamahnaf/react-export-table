@@ -245,6 +245,11 @@ You find this three type theme-
 ## ExportAsCsv
 
 <table width="100%">
+ <tr>
+    <th> Name </th>
+    <th> Types </th>
+    <th> Default </th>
+  </tr>
   <tr>
     <td> chilren </td>
     <td> ReactNode (Required) </td>
