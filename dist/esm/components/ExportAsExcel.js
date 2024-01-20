@@ -1,4 +1,5 @@
 import { jsx as _jsx } from "react/jsx-runtime";
+import React from "react";
 import * as xlsx from "xlsx";
 const ExportAsExcel = ({ children, data, headers, name = "reactExportTable", minColumnWidth = 15, fileName = "reactExportTable" }) => {
     const onExcelExport = () => {
@@ -23,7 +24,9 @@ const ExportAsExcel = ({ children, data, headers, name = "reactExportTable", min
         xlsx.utils.book_append_sheet(wb, ws, name);
         xlsx.writeFile(wb, `${fileName.toLowerCase().replace(/ /g, "-")}.xlsx`);
     };
-    return (_jsx("span", Object.assign({ onClick: onExcelExport }, { children: children })));
+    return (_jsx(React.Fragment, { children: children === null || children === void 0 ? void 0 : children({
+            onClick: onExcelExport
+        }) }));
 };
 export default ExportAsExcel;
 //# sourceMappingURL=ExportAsExcel.js.map

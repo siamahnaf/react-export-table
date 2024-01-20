@@ -1,7 +1,10 @@
 import React from "react";
+interface ChildrenProps {
+    onClick: () => void;
+}
 interface Props {
     data: Array<any>;
-    children: React.ReactNode;
+    children: (props: ChildrenProps) => React.ReactNode;
     fileName?: string;
 }
 declare const ExportAsCsv: ({ data, children, fileName }: Props) => JSX.Element;

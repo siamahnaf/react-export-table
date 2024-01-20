@@ -1,4 +1,5 @@
 import { jsx as _jsx } from "react/jsx-runtime";
+import React from "react";
 const CopyToClipboard = ({ children, data, headers, onCopied, onFailed }) => {
     const handleCopy = () => {
         const tableData = data.map((item) => {
@@ -13,7 +14,9 @@ const CopyToClipboard = ({ children, data, headers, onCopied, onFailed }) => {
             onFailed === null || onFailed === void 0 ? void 0 : onFailed();
         });
     };
-    return _jsx("span", Object.assign({ onClick: handleCopy }, { children: children }));
+    return _jsx(React.Fragment, { children: children === null || children === void 0 ? void 0 : children({
+            onClick: handleCopy
+        }) });
 };
 export default CopyToClipboard;
 //# sourceMappingURL=CopyToClipboard.js.map

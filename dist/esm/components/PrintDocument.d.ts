@@ -1,5 +1,8 @@
 import React from "react";
 import { Color, CellWidthType, RowInput } from "jspdf-autotable";
+interface ChildrenProps {
+    onClick: () => void;
+}
 interface StylesDefs {
     font?: "helvetica" | "times" | "courier";
     fontStyle?: "normal" | "bold" | "italic" | "italic";
@@ -23,7 +26,7 @@ interface Spacing {
     bottom?: number;
 }
 interface Props {
-    children: React.ReactNode;
+    children: (props: ChildrenProps) => React.ReactNode;
     data: Array<any>;
     headers: string[];
     foot?: RowInput;

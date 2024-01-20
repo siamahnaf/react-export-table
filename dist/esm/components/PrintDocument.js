@@ -1,4 +1,5 @@
 import { jsx as _jsx } from "react/jsx-runtime";
+import React from "react";
 import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
 const PrintDocument = (props) => {
@@ -52,7 +53,9 @@ const PrintDocument = (props) => {
             });
         }
     };
-    return _jsx("span", Object.assign({ onClick: onPrint }, { children: children }));
+    return _jsx(React.Fragment, { children: children === null || children === void 0 ? void 0 : children({
+            onClick: onPrint
+        }) });
 };
 export default PrintDocument;
 //# sourceMappingURL=PrintDocument.js.map

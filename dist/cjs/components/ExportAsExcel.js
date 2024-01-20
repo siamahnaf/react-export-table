@@ -22,8 +22,12 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const jsx_runtime_1 = require("react/jsx-runtime");
+const react_1 = __importDefault(require("react"));
 const xlsx = __importStar(require("xlsx"));
 const ExportAsExcel = ({ children, data, headers, name = "reactExportTable", minColumnWidth = 15, fileName = "reactExportTable" }) => {
     const onExcelExport = () => {
@@ -48,7 +52,9 @@ const ExportAsExcel = ({ children, data, headers, name = "reactExportTable", min
         xlsx.utils.book_append_sheet(wb, ws, name);
         xlsx.writeFile(wb, `${fileName.toLowerCase().replace(/ /g, "-")}.xlsx`);
     };
-    return ((0, jsx_runtime_1.jsx)("span", Object.assign({ onClick: onExcelExport }, { children: children })));
+    return ((0, jsx_runtime_1.jsx)(react_1.default.Fragment, { children: children === null || children === void 0 ? void 0 : children({
+            onClick: onExcelExport
+        }) }));
 };
 exports.default = ExportAsExcel;
 //# sourceMappingURL=ExportAsExcel.js.map

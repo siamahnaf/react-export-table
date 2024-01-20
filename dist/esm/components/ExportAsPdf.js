@@ -1,4 +1,5 @@
 import { jsx as _jsx } from "react/jsx-runtime";
+import React from "react";
 import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
 const ExportAsPdf = (props) => {
@@ -41,7 +42,9 @@ const ExportAsPdf = (props) => {
         }
         doc.save(`${fileName.toLowerCase().replace(/ /g, "-")}.pdf`);
     };
-    return _jsx("span", Object.assign({ onClick: onPdfHandler }, { children: children }));
+    return _jsx(React.Fragment, { children: children === null || children === void 0 ? void 0 : children({
+            onClick: onPdfHandler
+        }) });
 };
 export default ExportAsPdf;
 //# sourceMappingURL=ExportAsPdf.js.map

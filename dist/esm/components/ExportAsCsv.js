@@ -1,4 +1,5 @@
 import { jsx as _jsx } from "react/jsx-runtime";
+import React from "react";
 function convertToCSV(data) {
     const headers = Object.keys(data[0]).join(',') + '\n';
     const rows = data.map(item => Object.values(item).join(',') + '\n');
@@ -15,7 +16,9 @@ const ExportAsCsv = ({ data, children, fileName = "reactExportTable" }) => {
         a.click();
         window.URL.revokeObjectURL(url);
     };
-    return (_jsx("span", Object.assign({ onClick: downloadCSV }, { children: children })));
+    return (_jsx(React.Fragment, { children: children === null || children === void 0 ? void 0 : children({
+            onClick: downloadCSV
+        }) }));
 };
 export default ExportAsCsv;
 //# sourceMappingURL=ExportAsCsv.js.map

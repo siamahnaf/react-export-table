@@ -4,6 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const jsx_runtime_1 = require("react/jsx-runtime");
+const react_1 = __importDefault(require("react"));
 const jspdf_1 = __importDefault(require("jspdf"));
 const jspdf_autotable_1 = __importDefault(require("jspdf-autotable"));
 const ExportAsPdf = (props) => {
@@ -46,7 +47,9 @@ const ExportAsPdf = (props) => {
         }
         doc.save(`${fileName.toLowerCase().replace(/ /g, "-")}.pdf`);
     };
-    return (0, jsx_runtime_1.jsx)("span", Object.assign({ onClick: onPdfHandler }, { children: children }));
+    return (0, jsx_runtime_1.jsx)(react_1.default.Fragment, { children: children === null || children === void 0 ? void 0 : children({
+            onClick: onPdfHandler
+        }) });
 };
 exports.default = ExportAsPdf;
 //# sourceMappingURL=ExportAsPdf.js.map

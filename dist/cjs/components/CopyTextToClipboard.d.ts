@@ -1,6 +1,9 @@
 import React from "react";
+interface ChildrenProps {
+    onClick: () => void;
+}
 interface Props {
-    children: React.ReactNode;
+    children: (props: ChildrenProps) => React.ReactNode;
     text: string;
     onCopied?: () => void;
     onFailed?: () => void;

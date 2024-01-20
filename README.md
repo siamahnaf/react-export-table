@@ -22,9 +22,11 @@ import { ExportAsExcel, ExportAsPdf, ExportAsCsv, CopyToClipboard, CopyTextToCli
     data={data}
     headers={["Name", "Age", "Something"]}
 >
-    <button>
+    {(props)=> (
+      <button {...props}>
         Export as Excel
-    </button>
+      </button>
+    )}
 </ExportAsExcel>
 
 //Export as pdf
@@ -34,16 +36,20 @@ import { ExportAsExcel, ExportAsPdf, ExportAsCsv, CopyToClipboard, CopyTextToCli
     headerStyles={{ fillColor: "red" }}
     title="Sections List"
 >
-    <button>
+    {(props)=> (
+      <button {...props}>
         Export as PDF
-    </button>
+      </button>
+    )}
 </ExportAsPdf>
 
 //Export as CSV
 <ExportAsCsv
     data={data}
 >
-    <button>Hello World</button>
+    {(props)=> (
+      <button {...props}>Hello World</button>
+    )}
 </ExportAsCsv>
 
 //Copy to clipboard (Array or Table)
@@ -51,16 +57,20 @@ import { ExportAsExcel, ExportAsPdf, ExportAsCsv, CopyToClipboard, CopyTextToCli
     data={data}
     headers={["CreatedBy", "Age", "Something Else"]}
 >
-    <button>
+    {(props)=> (
+      <button {...props}>
         Copy Document
-    </button>
+      </button>
+    )}
 </CopyToClipboard>
 
 //Copy to clipboard (text)
 <CopyTextToClipboard text="Hello World">
-    <button>
+    {(props)=> (
+      <button {...props}>
         Copy Text
-    </button>
+      </button>
+    )}
 </CopyTextToClipboard>
 
 
@@ -69,9 +79,11 @@ import { ExportAsExcel, ExportAsPdf, ExportAsCsv, CopyToClipboard, CopyTextToCli
     data={data}
     headers={["CreatedBy", "Age", "Something Else"]}
 >
-    <button>
+    {(props)=> (
+      <button {...props}>
         Copy Text
-    </button>
+      </button>
+    )}
 </PrintDocument>
 
 //Excel to json converter or Read Excel File
@@ -474,6 +486,34 @@ You find this three type theme-
     <td> Selected file info </td>
   </tr>
 </table>
+
+# Migrate to Version 3
+In version 3 I added more headless on each component. I update only `CopyTextToClipboard`, `CopyToClipboard`, `ExportAsCsv`, `ExportAsExcel`, `ExportAsPdf`, `PrintDocument` component.
+
+Update this
+```bash
+<AnyOfThoseComponent
+    data={data}
+    headers={["Name", "Age", "Something"]}
+>
+    <button>
+        Export as Excel
+    </button>
+</AnyOfThoseComponent>
+```
+to
+```bash
+<AnyOfThoseComponent
+    data={data}
+    headers={["Name", "Age", "Something"]}
+>
+    {(props)=> (
+      <button {...props}>
+        Export as Excel
+      </button>
+    )}
+</AnyOfThoseComponent>
+```
 
 # Stay in touch
 
