@@ -1,3 +1,5 @@
+<img src="https://res.cloudinary.com/dbjrx698c/image/upload/v1704611347/logo_w4vxp0.png" width="100" height="100" style="display: block; margin: 0 auto;">
+
 # React Export Table
 A package for for exporting array data or table data as excel sheet, csv, pdf and tools for copied data to clipboard or printing data. By using this package you can you can export table data and print table data or copy to clipboard all in one place.
 
