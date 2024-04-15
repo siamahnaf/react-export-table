@@ -8,9 +8,9 @@ const react_1 = __importDefault(require("react"));
 const jspdf_1 = __importDefault(require("jspdf"));
 const jspdf_autotable_1 = __importDefault(require("jspdf-autotable"));
 const ExportAsPdf = (props) => {
-    const { children, data, headers, title, theme = "grid", styles, headerStyles, footerStyles, foot, margin, fileName = "reactExportTable" } = props;
+    const { children, data, headers, title, theme = "grid", styles, orientation = "portrait", headerStyles, footerStyles, foot, margin, fileName = "reactExportTable" } = props;
     const onPdfHandler = () => {
-        const doc = new jspdf_1.default();
+        const doc = new jspdf_1.default(orientation);
         const body = data.map((item) => {
             const keys = Object.keys(item);
             const values = keys.map((key) => item[key]);
