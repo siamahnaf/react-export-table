@@ -8,7 +8,7 @@ const react_1 = __importDefault(require("react"));
 const jspdf_1 = __importDefault(require("jspdf"));
 const jspdf_autotable_1 = __importDefault(require("jspdf-autotable"));
 const ExportAsPdf = (props) => {
-    const { children, data, headers, title, theme = "grid", styles, orientation = "portrait", headerStyles, columnStyles, footerStyles, foot, margin, fileName = "reactExportTable" } = props;
+    const { children, data, headers, title, theme = "grid", styles, orientation = "portrait", headerStyles, footerStyles, foot, margin, fileName = "reactExportTable" } = props;
     const onPdfHandler = () => {
         const doc = new jspdf_1.default(orientation);
         const body = data.map((item) => {
@@ -33,16 +33,6 @@ const ExportAsPdf = (props) => {
                 body: body,
                 foot: [foot]
             });
-        } else if (columnStyles) {
-            (0, jspdf_autotable_1.default)(doc, {
-                theme: theme,
-                head: [headers],
-                headStyles: headerStyles,
-                margin: Object.assign(Object.assign({}, margin), { top: title ? ((margin === null || margin === void 0 ? void 0 : margin.top) || 30) : margin === null || margin === void 0 ? void 0 : margin.top }),
-                styles: styles,
-                columnStyles: columnStyles,
-                body: body
-            });
         }
         else {
             (0, jspdf_autotable_1.default)(doc, {
@@ -57,11 +47,9 @@ const ExportAsPdf = (props) => {
         }
         doc.save(`${fileName.toLowerCase().replace(/ /g, "-")}.pdf`);
     };
-    return (0, jsx_runtime_1.jsx)(react_1.default.Fragment, {
-        children: children === null || children === void 0 ? void 0 : children({
+    return (0, jsx_runtime_1.jsx)(react_1.default.Fragment, { children: children === null || children === void 0 ? void 0 : children({
             onClick: onPdfHandler
-        })
-    });
+        }) });
 };
 exports.default = ExportAsPdf;
 //# sourceMappingURL=ExportAsPdf.js.map
