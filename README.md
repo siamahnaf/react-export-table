@@ -6,29 +6,37 @@
 </picture> 
 <br/> <br/>
 
-# React Export Table
-A package for for exporting array data or table data as excel sheet, csv, pdf and tools for copied data to clipboard or printing data. By using this package you can you can export table data and print table data or copy to clipboard all in one place.
+# @siamf/react-export
+A React package that simplifies data exporting and clipboard management. It provides react component for printing documents, exporting data as PDF, Excel, and CSV, as well as copying text and structured data to the clipboard.
 
 <a href="https://www.buymeacoffee.com/siamahnaf" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
 
-- Small in Size
-- All in one
-- Properly Maintained
+- Small Size
+- All Export Formate
+- Export As PDF
+- Export As CSV
+- Export As Excel
+- Copy table data to Clipboard
+- Copy any text to clipboard
+- Excel or Sheet to JSON converter
 
-### What's new on version 3.1.8
-- Added `orientation` props to `ExportAsPdf` component.
-- Added `orientation` props to `PrintDocument` component.
-- Added a solve for "Error: Orientation can be only..." error when orientation props is not provided
+### What's new on version 4
+- Remove file upload component from this package, Instead I create another package [@siamf/upload](https://www.npmjs.com/package/@siamf/upload) with more functionality and options. See the docs [here](https://www.npmjs.com/package/@siamf/upload)
+- Rename the component `ExcelToJsonConverter` to `ExcelToJson`
+- Huge API change for `ExcelToJson` this component. For more details read the docs for this component.
+- React 19 Support
+- Code Optimizations
+- Package Update
 
 
 # Installation
 
 ```bash
-$ npm i react-export-table
+$ npm i @siamf/react-export
 ```
 
-```bash
-import { ExportAsExcel, ExportAsPdf, ExportAsCsv, CopyToClipboard, CopyTextToClipboard, PrintDocument, ExcelToJsonConverter, FileUpload } from "react-export-table";
+```javascript
+import { ExportAsExcel, ExportAsPdf, ExportAsCsv, CopyToClipboard, CopyTextToClipboard, PrintDocument, ExcelToJson } from "@siamf/react-export";
 
 
 //Export as Excel Sheet
@@ -101,7 +109,7 @@ import { ExportAsExcel, ExportAsPdf, ExportAsCsv, CopyToClipboard, CopyTextToCli
 </PrintDocument>
 
 //Excel to json converter or Read Excel File
-<ExcelToJsonConverter>
+<ExcelToJson>
     {({
         isDragging,
         dragProps,
@@ -114,22 +122,7 @@ import { ExportAsExcel, ExportAsPdf, ExportAsCsv, CopyToClipboard, CopyTextToCli
             {errors}
         </div>
     )}
-</ExcelToJsonConverter>
-
-//File Upload
-<FileUpload acceptType={[".pdf"]}>
-    {({
-        isDragging,
-        dragProps,
-        onFileUpload,
-        errors,
-        fileInfo
-    }) => (
-        <div className="border border-solid border-red-600 p-8" {...dragProps} onClick={onFileUpload}>
-            {errors}
-        </div>
-    )}
-</FileUpload>
+</ExcelToJson>
 ```
 
 # Options
@@ -373,7 +366,7 @@ You find this three type theme-
 
 - Same as `ExportAsPdf` Component!
 
-## ExcelToJsonConverter
+## ExcelToJson
 
 ### Props
 <table width="100%">
@@ -381,25 +374,37 @@ You find this three type theme-
     <th> Name </th>
     <th> Types </th>
     <th> Description </th>
-    <th> Example </th>
+    <th> Required/Optional </th>
   </tr>
   <tr>
     <td> onRead </td>
-    <td> Function (Optional) </td>
-    <td> For getting json data </td>
-    <td> `onRead={(data:YourType)=> console.log(data)}` </td>
+    <td> (data: Array<any>) => void </td>
+    <td> For listening converted data </td>
+    <td> Required </td>
   </tr>
-   <tr>
+  <tr>
+    <td> value </td>
+    <td> Array<any> </td>
+    <td> Default Value </td>
+    <td> Required </td>
+  </tr>
+  <tr>
+    <td> children </td>
+    <td> (props: ExportInterface) => React.ReactNode </td>
+    <td> UI for drop zone </td>
+    <td> Required </td>
+  </tr>
+  <tr>
     <td> inputProps </td>
-    <td> React.HTMLProps<HTMLInputElement> (Optional) </td>
+    <td> React.HTMLProps<HTMLInputElement> </td>
     <td> Input Props for input field </td>
-    <td> </td>
+    <td> Optional </td>
   </tr>
    <tr>
     <td> onChange </td>
-    <td> Function (Optional) </td>
-    <td></td>
-    <td>`onChange={(file:File)=> console.log(file)}`</td>
+    <td> (file: File | null) => void </td>
+    <td> Listener for on file change </td>
+    <td> optional </td>
   </tr>
 </table>
 
@@ -418,131 +423,32 @@ You find this three type theme-
    <tr>
     <td> isDragging </td>
     <td> boolean </td>
-    <td> "true" if a file is being dragged </td>
+    <td> For listening is file is dragging on dropzone </td>
   </tr>
    <tr>
     <td> onFileUpload </td>
-    <td> function </td>
+    <td> () => void </td>
     <td> Called when an element is clicks and triggers to open a file dialog </td>
   </tr>
-   <tr>
-    <td> errors </td>
-    <td> string </td>
-    <td> Validation Error </td>
-  </tr>
-   <tr>
+  <tr>
     <td> data </td>
     <td> Array<any> </td>
     <td> Read or Converted data </td>
+  </tr> 
+  <tr>
+    <td> file </td>
+    <td> File | null </td>
+    <td> Selected file </td>
   </tr>
   <tr>
-    <td> fileInfo </td>
-    <td> object </td>
-    <td> Selected file info </td>
-  </tr>
-</table>
-
-## FileUpload
-
-### Props
-<table width="100%">
-  <tr>
-    <th> Name </th>
-    <th> Types </th>
-    <th> Description </th>
-    <th> Example </th>
-  </tr>
-  <tr>
-    <td> acceptType </td>
-    <td> Function (Required) </td>
-    <td> File Accept Type </td>
-    <td> `acceptType={[".pdf"]}` </td>
-  </tr>
-   <tr>
-    <td> inputProps </td>
-    <td> React.HTMLProps<HTMLInputElement> (Optional) </td>
-    <td> Input Props for input field </td>
-    <td> </td>
-  </tr>
-  <tr>
-    <td> onChange </td>
-    <td> Function (Optional) </td>
-    <td></td>
-    <td>`onChange={(file:File)=> console.log(file)}`</td>
-  </tr>
-  <tr>
-    <td> size </td>
-    <td> File size for validation (Optional) </td>
-    <td> Size Need to be define in MB</td>
-    <td></td>
-  </tr>
-</table>
-
-### Exported Options
-<table width="100%">
-  <tr>
-    <th> Name </th>
-    <th> Types </th>
-    <th> Description </th>
-  </tr>
-  <tr>
-    <td> dragProps </td>
-    <td> object </td>
-    <td> Native element props for drag and drop feature </td>
-  </tr>
-   <tr>
-    <td> isDragging </td>
-    <td> boolean </td>
-    <td> "true" if a file is being dragged </td>
-  </tr>
-   <tr>
-    <td> onFileUpload </td>
-    <td> function </td>
-    <td> Called when an element is clicks and triggers to open a file dialog </td>
-  </tr>
-   <tr>
     <td> errors </td>
     <td> string </td>
-    <td> Validation Error </td>
-  </tr>
-  <tr>
-    <td> fileInfo </td>
-    <td> object </td>
-    <td> Selected file info </td>
+    <td> Validation error </td>
   </tr>
 </table>
-
-# Migrate to Version 3
-In version 3 I added more headless on each component. I update only `CopyTextToClipboard`, `CopyToClipboard`, `ExportAsCsv`, `ExportAsExcel`, `ExportAsPdf`, `PrintDocument` component.
-
-Update this
-```bash
-<AnyOfThoseComponent
-    data={data}
-    headers={["Name", "Age", "Something"]}
->
-    <button>
-        Export as Excel
-    </button>
-</AnyOfThoseComponent>
-```
-to
-```bash
-<AnyOfThoseComponent
-    data={data}
-    headers={["Name", "Age", "Something"]}
->
-    {(props)=> (
-      <button {...props}>
-        Export as Excel
-      </button>
-    )}
-</AnyOfThoseComponent>
-```
 
 # Stay in touch
 
 - Author - [Siam Ahnaf](https://www.siamahnaf.com/)
 - Website - [https://www.siamahnaf.com/](https://www.siamahnaf.com/)
-- Twitter - [https://twitter.com/siamahnaf198](https://twitter.com/siamahnaf198)
 - Github - [https://github.com/siamahnaf](https://github.com/siamahnaf)

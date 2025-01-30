@@ -1,3 +1,4 @@
+"use client"
 import React from "react";
 import * as xlsx from "xlsx";
 
@@ -14,7 +15,7 @@ interface Props {
     fileName?: string;
 }
 
-const ExportAsExcel = ({ children, data, headers, name = "reactExportTable", minColumnWidth = 15, fileName = "reactExportTable" }: Props) => {
+const ExportAsExcel = ({ children, data, headers, name = "reactExport", minColumnWidth = 15, fileName = "reactExport" }: Props) => {
     const onExcelExport = () => {
         const worksheetData = [headers, ...data.map(obj => Object.values(obj))];
         const wb = xlsx.utils.book_new();

@@ -1,3 +1,4 @@
+"use client"
 import React from "react";
 
 function convertToCSV(data: Array<any>) {
@@ -16,7 +17,7 @@ interface Props {
     fileName?: string;
 }
 
-const ExportAsCsv = ({ data, children, fileName = "reactExportTable" }: Props) => {
+const ExportAsCsv = ({ data, children, fileName = "reactExport" }: Props) => {
     const csvData = convertToCSV(data);
 
     const downloadCSV = () => {

@@ -1,3 +1,4 @@
+"use client"
 import React from "react";
 import jsPDF from "jspdf";
 import autoTable, { Color, CellWidthType, RowInput } from "jspdf-autotable";
@@ -44,7 +45,7 @@ interface Props {
 }
 
 const ExportAsPdf = (props: Props) => {
-    const { children, data, headers, title, theme = "grid", styles, headerStyles, footerStyles, foot, margin, fileName = "reactExportTable", orientation } = props;
+    const { children, data, headers, title, theme = "grid", styles, headerStyles, footerStyles, foot, margin, fileName = "reactExport", orientation } = props;
 
     if (orientation) {
         if (orientation !== "l" && orientation !== "portrait" && orientation !== "landscape" && orientation !== "p") throw new Error("Orientation can be only 'landscape', 'portrait', 'l' or 'p'.");
