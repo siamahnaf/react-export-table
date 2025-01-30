@@ -1,3 +1,4 @@
+"use client";
 import { jsx as _jsx } from "react/jsx-runtime";
 import React from "react";
 function convertToCSV(data) {
@@ -5,7 +6,7 @@ function convertToCSV(data) {
     const rows = data.map(item => Object.values(item).join(',') + '\n');
     return headers + rows.join('');
 }
-const ExportAsCsv = ({ data, children, fileName = "reactExportTable" }) => {
+const ExportAsCsv = ({ data, children, fileName = "reactExport" }) => {
     const csvData = convertToCSV(data);
     const downloadCSV = () => {
         const blob = new Blob([csvData], { type: 'text/csv' });

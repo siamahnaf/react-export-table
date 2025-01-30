@@ -1,7 +1,8 @@
+"use client";
 import { jsx as _jsx } from "react/jsx-runtime";
 import React from "react";
 import * as xlsx from "xlsx";
-const ExportAsExcel = ({ children, data, headers, name = "reactExportTable", minColumnWidth = 15, fileName = "reactExportTable" }) => {
+const ExportAsExcel = ({ children, data, headers, name = "reactExport", minColumnWidth = 15, fileName = "reactExport" }) => {
     const onExcelExport = () => {
         const worksheetData = [headers, ...data.map(obj => Object.values(obj))];
         const wb = xlsx.utils.book_new();

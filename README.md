@@ -114,12 +114,12 @@ import { ExportAsExcel, ExportAsPdf, ExportAsCsv, CopyToClipboard, CopyTextToCli
         isDragging,
         dragProps,
         onFileUpload,
-        errors,
+        error,
         data,
-        fileInfo
+        file
     }) => (
         <div {...dragProps} onClick={onFileUpload}>
-            {errors}
+            Upload Excel File
         </div>
     )}
 </ExcelToJson>
@@ -441,7 +441,7 @@ You find this three type theme-
     <td> Selected file </td>
   </tr>
   <tr>
-    <td> errors </td>
+    <td> error </td>
     <td> string </td>
     <td> Validation error </td>
   </tr>

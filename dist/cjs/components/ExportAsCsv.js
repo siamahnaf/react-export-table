@@ -1,4 +1,5 @@
 "use strict";
+"use client";
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -10,7 +11,7 @@ function convertToCSV(data) {
     const rows = data.map(item => Object.values(item).join(',') + '\n');
     return headers + rows.join('');
 }
-const ExportAsCsv = ({ data, children, fileName = "reactExportTable" }) => {
+const ExportAsCsv = ({ data, children, fileName = "reactExport" }) => {
     const csvData = convertToCSV(data);
     const downloadCSV = () => {
         const blob = new Blob([csvData], { type: 'text/csv' });

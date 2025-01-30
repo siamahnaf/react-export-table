@@ -1,4 +1,5 @@
 "use strict";
+"use client";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     var desc = Object.getOwnPropertyDescriptor(m, k);
@@ -39,7 +40,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const jsx_runtime_1 = require("react/jsx-runtime");
 const react_1 = __importDefault(require("react"));
 const xlsx = __importStar(require("xlsx"));
-const ExportAsExcel = ({ children, data, headers, name = "reactExportTable", minColumnWidth = 15, fileName = "reactExportTable" }) => {
+const ExportAsExcel = ({ children, data, headers, name = "reactExport", minColumnWidth = 15, fileName = "reactExport" }) => {
     const onExcelExport = () => {
         const worksheetData = [headers, ...data.map(obj => Object.values(obj))];
         const wb = xlsx.utils.book_new();

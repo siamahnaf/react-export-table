@@ -1,3 +1,4 @@
+"use client";
 import { jsx as _jsx } from "react/jsx-runtime";
 import React from "react";
 const CopyToClipboard = ({ children, data, headers, onCopied, onFailed }) => {
