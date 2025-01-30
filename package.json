@@ -1,8 +1,8 @@
 {
-  "name": "react-export-table",
-  "version": "3.0.1",
-  "description": "A all in one solution for exporting array data as excel, pdf and copy to clipboard & print data!",
-  "homepage": "https://github.com/siamahnaf/react-export-table",
+  "name": "@siamf/react-export",
+  "version": "4.0.0",
+  "description": "A React package that simplifies data exporting and clipboard management. It provides react component for printing documents, exporting data as PDF, Excel, and CSV, as well as copying text and structured data to the clipboard.",
+  "homepage": "https://github.com/siamahnaf/react-export",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "files": [
@@ -19,27 +19,34 @@
     "url": "https://www.siamahnaf.com"
   },
   "license": "MIT",
-  "keywords": [],
+  "keywords": [
+    "react-table",
+    "react-export",
+    "export-pdf",
+    "export-csv",
+    "react file upload",
+    "react upload"
+  ],
   "repository": {
     "type": "git",
-    "directory": "https://github.com/siamahnaf/react-export-table",
-    "url": "https://github.com/siamahnaf/react-export-table"
+    "directory": "https://github.com/siamahnaf/react-export",
+    "url": "https://github.com/siamahnaf/react-export"
   },
   "devDependencies": {
-    "@types/node": "^18.16.3",
-    "@types/react": "^18.2.0",
-    "@types/react-dom": "^18.2.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "typescript": "^5.0.4"
+    "@types/node": "^22.12.0",
+    "@types/react": "^19.0.8",
+    "@types/react-dom": "^19.0.3",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "typescript": "^5.7.3"
   },
   "peerDependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react": "^18 || ^19",
+    "react-dom": "^18 || ^19"
   },
   "dependencies": {
-    "jspdf": "^2.5.1",
-    "jspdf-autotable": "^3.5.28",
+    "jspdf": "^2.5.2",
+    "jspdf-autotable": "^3.8.4",
     "xlsx": "^0.18.5"
   }
 }
