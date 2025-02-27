@@ -165,6 +165,16 @@ import { ExportAsExcel, ExportAsPdf, ExportAsCsv, CopyToClipboard, CopyTextToCli
     <td> string (Optional) </td>
     <td> reactExportTable </td>
   </tr>
+  <tr>
+    <td> onError </td>
+    <td> (error:Error)=>void (Optional) </td>
+    <td> </td>
+  </tr>
+  <tr>
+    <td> onSuccess </td>
+    <td> ()=>void (Optional) </td>
+    <td>  </td>
+  </tr>
 </table>
 
 ## ExportAsPdf
@@ -235,6 +245,16 @@ import { ExportAsExcel, ExportAsPdf, ExportAsCsv, CopyToClipboard, CopyTextToCli
     <td> Orientation (Optional). Format is- "landscape" | "portrait" | "l" | "p" </td>
     <td>  </td>
   </tr>
+  <tr>
+    <td> onError </td>
+    <td> (error:Error)=>void (Optional) </td>
+    <td> </td>
+  </tr>
+  <tr>
+    <td> onSuccess </td>
+    <td> ()=>void (Optional) </td>
+    <td>  </td>
+  </tr>
 </table>
 
 ### StylesDefs
@@ -289,6 +309,16 @@ You find this three type theme-
     <td> fileName </td>
     <td> String (Optional) </td>
     <td> Custom CSV File Name </td>
+  </tr>
+  <tr>
+    <td> onError </td>
+    <td> (error:Error)=>void (Optional) </td>
+    <td> </td>
+  </tr>
+  <tr>
+    <td> onSuccess </td>
+    <td> ()=>void (Optional) </td>
+    <td>  </td>
   </tr>
 </table>
 
