@@ -20,17 +20,13 @@ A React package that simplifies data exporting and clipboard management. It prov
 - Copy any text to clipboard
 - Excel or Sheet to JSON converter
 
-### What's new on version 4.0.3
+### What's new on version 4.0.5
 - Added `onSuccess` and `onError` props to `ExportAsExcel`, `ExportAsPdf`, and `ExportAsCsv` component
 - Code optimizations 
-
-
-### What's new on version 4
 - Remove file upload component from this package, Instead I create another package [@siamf/upload](https://www.npmjs.com/package/@siamf/upload) with more functionality and options. See the docs [here](https://www.npmjs.com/package/@siamf/upload)
 - Rename the component `ExcelToJsonConverter` to `ExcelToJson`
-- Huge API change for `ExcelToJson` this component. For more details read the docs for this component.
+- Huge API change for `ExcelToJson` component. For more details, read the docs for this component.
 - React 19 Support
-- Code Optimizations
 - Package Update
 
 

@@ -11,16 +11,24 @@ function convertToCSV(data) {
     const rows = data.map(item => Object.values(item).join(',') + '\n');
     return headers + rows.join('');
 }
-const ExportAsCsv = ({ data, children, fileName = "reactExport" }) => {
+const ExportAsCsv = ({ data, children, fileName = "reactExport", onError, onSuccess }) => {
     const csvData = convertToCSV(data);
     const downloadCSV = () => {
-        const blob = new Blob([csvData], { type: 'text/csv' });
-        const url = window.URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = `${fileName}.csv`;
-        a.click();
-        window.URL.revokeObjectURL(url);
+        try {
+            const blob = new Blob([csvData], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${fileName}.csv`;
+            a.click();
+            window.URL.revokeObjectURL(url);
+            if (onSuccess)
+                onSuccess();
+        }
+        catch (error) {
+            if (onError)
+                onError(error);
+        }
     };
     return ((0, jsx_runtime_1.jsx)(react_1.default.Fragment, { children: children === null || children === void 0 ? void 0 : children({
             onClick: downloadCSV

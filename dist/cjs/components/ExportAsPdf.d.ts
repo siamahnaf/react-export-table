@@ -38,6 +38,8 @@ interface Props {
     footerStyles?: StylesDefs;
     margin?: Spacing;
     orientation?: "landscape" | "portrait" | "l" | "p";
+    onError?: (error: Error) => void;
+    onSuccess?: () => void;
 }
 declare const ExportAsPdf: (props: Props) => import("react/jsx-runtime").JSX.Element;
 export default ExportAsPdf;
