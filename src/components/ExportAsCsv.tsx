@@ -15,19 +15,26 @@ interface Props {
     data: Array<any>;
     children: (props: ChildrenProps) => React.ReactNode;
     fileName?: string;
+    onError?: (error: Error) => void;
+    onSuccess?: () => void;
 }
 
-const ExportAsCsv = ({ data, children, fileName = "reactExport" }: Props) => {
+const ExportAsCsv = ({ data, children, fileName = "reactExport", onError, onSuccess }: Props) => {
     const csvData = convertToCSV(data);
 
     const downloadCSV = () => {
-        const blob = new Blob([csvData], { type: 'text/csv' });
-        const url = window.URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = `${fileName}.csv`;
-        a.click();
-        window.URL.revokeObjectURL(url);
+        try {
+            const blob = new Blob([csvData], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${fileName}.csv`;
+            a.click();
+            window.URL.revokeObjectURL(url);
+            if (onSuccess) onSuccess();
+        } catch (error) {
+            if (onError) onError(error as Error);
+        }
     };
     return (
         <React.Fragment>
